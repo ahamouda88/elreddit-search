@@ -1,0 +1,20 @@
+# --Package Files-- # 
+*.jar 
+
+# --Maven-- #  
+target/ 
+
+# --Java-- #
+.class
+
+# --Eclipse-- #
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+.classpath
+.settings/
