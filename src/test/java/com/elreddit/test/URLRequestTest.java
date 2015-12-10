@@ -31,7 +31,7 @@ public class URLRequestTest {
 	}
 	
 	@Test
-	public void testRandowURL() throws IOException{
+	public void testRandomURL() throws IOException{
 		String urlString = "https://www.google.com/";
 		URL url = new URL(urlString);
 		String result = search.getHttpResponse(url);
