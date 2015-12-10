@@ -21,12 +21,21 @@ public class URLRequestTest {
 		search = new URLRequestImpl();
 	}
 	@Test
-	public void testSearchByQuery() throws IOException{
+	public void testGetHttpResponse() throws IOException{
 		String query = "test";
 		String urlString = getURLString(query);		
 		URL url = new URL(urlString);
 		String result = search.getHttpResponse(url);
 		
+		Assert.assertNotNull(result);		
+	}
+	
+	@Test
+	public void testRandowURL() throws IOException{
+		String urlString = "https://www.google.com/";
+		URL url = new URL(urlString);
+		String result = search.getHttpResponse(url);
+		System.out.println(result);
 		Assert.assertNotNull(result);
 		
 	}
