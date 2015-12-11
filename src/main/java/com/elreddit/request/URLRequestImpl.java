@@ -20,7 +20,7 @@ public class URLRequestImpl implements URLRequest{
 		return result;
 	}
 	
-	// TODO: Set the user-agent property
+	// TODO: Set the user-agent property 
 	private String getResponse(URL url) throws IOException {
 		ParametersUtil.checkNullParameters(url);
 		

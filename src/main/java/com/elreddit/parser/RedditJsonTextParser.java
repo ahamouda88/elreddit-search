@@ -27,11 +27,12 @@ public class RedditJsonTextParser implements JsonTextParser{
 	
 	public RedditJsonTextParser() {
 		mapper = new ObjectMapper();
+		// Using a new comparator to sort strings in case insensitive order.
 		attributeMap = new TreeMap<String, List<JsonNode>>((s1 ,s2) -> s1.toLowerCase().compareTo(s2.toLowerCase()));
 	}
 	
 	@Override
-	public String sortBy(String jsonText, String attrName) {	
+	public String sortTextBy(String jsonText, String attrName) {	
 		ParametersUtil.checkNullParameters(attrName, jsonText);
 		
 		String sortedResponse = null;

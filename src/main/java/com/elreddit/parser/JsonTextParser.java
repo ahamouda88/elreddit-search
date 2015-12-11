@@ -16,5 +16,5 @@ public interface JsonTextParser {
 	 * @throws NullPointerException if any of the given parameter is <b>null</b>.
 	 * 
 	 */
-	public String sortBy(String jsonText, String attrName);
+	public String sortTextBy(String jsonText, String attrName);
 }
