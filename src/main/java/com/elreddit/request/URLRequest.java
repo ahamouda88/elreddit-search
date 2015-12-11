@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * An interface represents the main methods for searching Reddit Comments.
+ * An interface represents the main methods for handling a URL request.
  */
 public interface URLRequest {
 
 	/**
-	 * This method is used to send a request to a give URL, and return the response as a string.
+	 * This method is used to send a request to a given URL, and return the response as a string.
 	 * 
-	 * @param url - the url.
+	 * @param url - the full url of the request.
 	 * @return the http response string.
 	 * @throws IOException - if an I/O exception occurs.
 	 */

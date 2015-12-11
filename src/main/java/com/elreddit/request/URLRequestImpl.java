@@ -20,35 +20,36 @@ public class URLRequestImpl implements URLRequest{
 		return result;
 	}
 	
+	// TODO: Set the user-agent property
 	private String getResponse(URL url) throws IOException {
 		ParametersUtil.checkNullParameters(url);
 		
 		StringBuilder sb = new StringBuilder();	
 		HttpURLConnection conn = null;
 		InputStreamReader inputStream = null;
+		BufferedReader buff = null;
 		try {
 			conn = (HttpURLConnection) url.openConnection();
-			conn.connect();
 			int statusCode = conn.getResponseCode();
 			// If status of the HTTP response is not a client error or server error then proceed.
 			if(statusCode < CLIENT_ERROR_CODE){
 				inputStream = new InputStreamReader(conn.getInputStream());
-				BufferedReader buff = new BufferedReader(inputStream);
+				buff = new BufferedReader(inputStream);
 				String line;
 				while((line = buff.readLine()) != null) {
 					sb.append(line);
 					sb.append("\n");
 				}
 			}
-		} finally{
-			// Disconnect the connection in any case either there is an exception or not.
-			if(conn != null){
-				conn.disconnect();
-			}
+		} finally {
 			// Closing the input stream.
 			if(inputStream != null){
 				inputStream.close();
 			}
+			// Disconnect the connection in any case either there is an exception or not.
+			if(conn != null){
+				conn.disconnect();
+			}			
 		}
 		return sb.toString();
 	}
