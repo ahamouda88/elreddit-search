@@ -11,10 +11,9 @@ public interface JsonTextParser {
 	 * 
 	 * @param jsonText - a Json text.
 	 * @param attrName - an attribute name.
-	 * @return the Json text after sorting.
+	 * @return the Json text after sorting. Returns <b>null</b> if input content is invalid.
 	 * 
 	 * @throws NullPointerException if any of the given parameter is <b>null</b>.
-	 * 
 	 */
 	public String sortTextBy(String jsonText, String attrName);
 }

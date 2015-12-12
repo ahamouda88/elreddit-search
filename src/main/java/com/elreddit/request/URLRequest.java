@@ -13,7 +13,9 @@ public interface URLRequest {
 	 * 
 	 * @param url - the full url of the request.
 	 * @return the http response string.
-	 * @throws IOException - if an I/O exception occurs.
+	 * 
+	 * @throws NullPointerException if given url is <b>null</b>.
+	 * @throws IOException if an I/O exception occurs.
 	 */
 	public String getHttpResponse(URL url) throws IOException;
 }
