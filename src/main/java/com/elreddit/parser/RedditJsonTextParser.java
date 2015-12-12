@@ -52,7 +52,7 @@ public class RedditJsonTextParser implements JsonTextParser{
 				sortedResponse = rootNode.toString();
 			}
 		} catch (IOException e) {
-			System.out.println("RedditTextParserImpl.sortBy - IOException: " + e.getMessage());
+			System.out.println("RedditJsonTextParser.sortBy - IOException: " + e.getMessage());
 		}
 		return sortedResponse;
 	}

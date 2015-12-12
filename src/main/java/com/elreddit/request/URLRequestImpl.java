@@ -13,15 +13,19 @@ public class URLRequestImpl implements URLRequest{
 	private static final int CLIENT_ERROR_CODE = 400;
 	
 	@Override
-	public String getHttpResponse(URL url) throws IOException {
+	public String getHttpResponse(URL url) {
 		ParametersUtil.checkNullParameters(url);
-		
-		String result = getResponse(url);
+		String result = null;
+		try{
+			result = getResponse(url);
+		}catch(IOException ex){
+			System.out.println("URLRequestImpl.getHttpResponse - IOException: " + ex.getMessage());
+		}
 		return result;
 	}
 	
-	// TODO: Set the user-agent property 
-	private String getResponse(URL url) throws IOException {
+	// TODO: Set the user-agent property
+	private String getResponse(URL url) throws IOException{
 		ParametersUtil.checkNullParameters(url);
 		
 		StringBuilder sb = new StringBuilder();	
@@ -51,7 +55,7 @@ public class URLRequestImpl implements URLRequest{
 				conn.disconnect();
 			}			
 		}
-		return sb.toString();
+		return sb.toString().isEmpty() ? null : sb.toString();
 	}
 	
 }

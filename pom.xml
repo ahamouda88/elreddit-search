@@ -52,7 +52,17 @@
             		<target>${java.version}</target>
        			</configuration>
     	</plugin>
+    	
+    	<!-- Maven WAR Plugin -->
+    	<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-war-plugin</artifactId>
+        	<configuration>
+            	<failOnMissingWebXml>false</failOnMissingWebXml>
+        	</configuration>
+    	</plugin>
     </plugins>
   </build>
 
+  <packaging>war</packaging>
 </project>
