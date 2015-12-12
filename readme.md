@@ -7,7 +7,6 @@
 - Java 1.8
 - Jackson API
 - Jersey 2.22.1
-###### For testing:
 - JUnit 4
 - Embedded Jetty Container.
 
