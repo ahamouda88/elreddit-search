@@ -17,7 +17,7 @@ The application is packaged as a 'war'.
 - Clone the repository
 - Java version should be 1.8 (To avoid any compilation errors).
 - Build the application using the following command: mvn clean install
-- Deploy the war file in Tomcat.
+- Deploy the war file to a Tomcat server.
 
 ## RESTful Web Service End Point:
 |              URI                   |                               Description                               |
