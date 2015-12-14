@@ -24,7 +24,6 @@ public class URLRequestImpl implements URLRequest{
 		return result;
 	}
 	
-	// TODO: Set the user-agent property
 	private String getResponse(URL url) throws IOException{
 		ParametersUtil.checkNullParameters(url);
 		
@@ -34,6 +33,8 @@ public class URLRequestImpl implements URLRequest{
 		BufferedReader buff = null;
 		try {
 			conn = (HttpURLConnection) url.openConnection();
+			// Create a custom User-Agent, to avoid the "Too Many Requests" response.
+			conn.setRequestProperty("User-Agent", "linux:com.elreddit.request:v1.0");
 			int statusCode = conn.getResponseCode();
 			// If status of the HTTP response is not a client error or server error then proceed.
 			if(statusCode < CLIENT_ERROR_CODE){
