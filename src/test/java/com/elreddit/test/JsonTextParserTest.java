@@ -30,4 +30,15 @@ public class JsonTextParserTest {
 		
 		Assert.assertEquals(expectedResult, actualResult);
 	}
+	
+	@Test
+	public void testSortyByTwo() throws InterruptedException, IOException{
+		String json = "{\"data\":{\"children\":[{\"company\": \"Paypal\", \"ceo\":\"Ahmed\"},{\"company\": \"Google\", \"ceo\":\"Ziad\"},{\"company\": \"Apple\", \"ceo\":\"Mike\"}]}}";
+		attrName = "ceo";
+		
+		String expectedResult = "{\"data\":{\"children\":[{\"company\":\"Paypal\",\"ceo\":\"Ahmed\"},{\"company\":\"Apple\",\"ceo\":\"Mike\"},{\"company\":\"Google\",\"ceo\":\"Ziad\"}]}}";		
+		String actualResult = textPareser.sortTextBy(json, attrName);
+
+		Assert.assertEquals(expectedResult, actualResult);
+	}
 }
