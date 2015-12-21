@@ -44,12 +44,14 @@ public class RedditJsonTextParser implements JsonTextParser{
 				parseFromJsonToMap(rootNode, attrName);
 				List<JsonNode> list = createJsonNodeList();
 				JsonNode dataNode = rootNode.get(DATA_NODE);
-				if(dataNode != null && dataNode.isObject()){
-					ObjectNode s = (ObjectNode) dataNode;
-					ArrayNode arrayNode = s.putArray(CHILDREN_NODE);				
-					arrayNode.addAll(list);	
+				if(dataNode != null){
+					if(dataNode.isObject()){
+						ObjectNode s = (ObjectNode) dataNode;
+						ArrayNode arrayNode = s.putArray(CHILDREN_NODE);				
+						arrayNode.addAll(list);	
+					}
+					sortedResponse = rootNode.toString();
 				}
-				sortedResponse = rootNode.toString();
 			}
 		} catch (IOException e) {
 			System.out.println("RedditJsonTextParser.sortTextBy - IOException: " + e.getMessage());
@@ -59,21 +61,24 @@ public class RedditJsonTextParser implements JsonTextParser{
 	
 	private void parseFromJsonToMap(JsonNode rootNode, String attrName){
 		synchronized(mutux){
-			JsonNode dataNode = rootNode.get(DATA_NODE);		    
-		    JsonNode children = dataNode.get(CHILDREN_NODE);
-		   
-		    Iterator<JsonNode> iterator = children.iterator();
-		    while(iterator.hasNext()){	    	
-				JsonNode entry = iterator.next();
-				iterator.remove();
-				JsonNode key = entry.findValue(attrName);
-				if(key != null){
-					String keyValue = key.textValue();
-					List<JsonNode> nodes = attributeMap.get(keyValue) == null ? 
-							new LinkedList<JsonNode>() : attributeMap.get(keyValue);
-					nodes.add(entry);
-					attributeMap.put(keyValue, nodes);
-				}
+			JsonNode dataNode = rootNode.get(DATA_NODE);	
+			if(dataNode != null){
+			    JsonNode children = dataNode.get(CHILDREN_NODE);
+			    if(children != null){
+				    Iterator<JsonNode> iterator = children.iterator();
+				    while(iterator.hasNext()){	    	
+						JsonNode entry = iterator.next();
+						iterator.remove();
+						JsonNode key = entry.findValue(attrName);
+						if(key != null){
+							String keyValue = key.textValue();
+							List<JsonNode> nodes = attributeMap.get(keyValue) == null ? 
+									new LinkedList<JsonNode>() : attributeMap.get(keyValue);
+							nodes.add(entry);
+							attributeMap.put(keyValue, nodes);
+						}
+					}
+			    }
 			}
 		}
 	}
