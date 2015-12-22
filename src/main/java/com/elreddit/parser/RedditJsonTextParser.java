@@ -59,6 +59,9 @@ public class RedditJsonTextParser implements JsonTextParser{
 		return sortedResponse;
 	}
 	
+	/*
+	 * A Method for parse a Json text and add it to map.
+	 */
 	private void parseFromJsonToMap(JsonNode rootNode, String attrName){
 		synchronized(mutux){
 			JsonNode dataNode = rootNode.get(DATA_NODE);	
