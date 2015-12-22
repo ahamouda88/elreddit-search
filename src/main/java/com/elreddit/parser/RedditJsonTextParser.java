@@ -89,9 +89,7 @@ public class RedditJsonTextParser implements JsonTextParser{
 	private List<JsonNode> createJsonNodeList(){
 		synchronized(mutux){
 			List<JsonNode> list = new LinkedList<JsonNode>();
-			for(List<JsonNode> tmpList : attributeMap.values()){
-				list.addAll(tmpList);
-			}
+			attributeMap.forEach((k,v)->list.addAll(v));
 			return list;
 		}
 	}
