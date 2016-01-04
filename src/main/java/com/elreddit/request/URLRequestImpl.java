@@ -27,7 +27,7 @@ public class URLRequestImpl implements URLRequest{
 	private String getResponse(URL url) throws IOException{
 		ParametersUtil.checkNullParameters(url);
 		
-		StringBuilder sb = new StringBuilder();	
+		StringBuilder sb = null;	
 		HttpURLConnection conn = null;
 		InputStreamReader inputStream = null;
 		BufferedReader buff = null;
@@ -38,6 +38,7 @@ public class URLRequestImpl implements URLRequest{
 			int statusCode = conn.getResponseCode();
 			// If status of the HTTP response is not a client error or server error then proceed.
 			if(statusCode < CLIENT_ERROR_CODE){
+				sb = new StringBuilder();
 				inputStream = new InputStreamReader(conn.getInputStream());
 				buff = new BufferedReader(inputStream);
 				String line;
@@ -56,7 +57,7 @@ public class URLRequestImpl implements URLRequest{
 				conn.disconnect();
 			}			
 		}
-		return sb.toString().isEmpty() ? null : sb.toString();
+		return sb != null ? sb.toString() : null;
 	}
 	
 }
