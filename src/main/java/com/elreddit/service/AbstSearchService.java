@@ -14,6 +14,9 @@ public abstract class AbstSearchService {
 	private final URLRequest urlRequest;
 	protected final Object mutex = new Object();
 	
+	/*
+	 * Inject the URL Request into the Search Service.
+	 */
 	public AbstSearchService(URLRequest urlRequest){
 		this.urlRequest = urlRequest;
 	}
@@ -43,7 +46,7 @@ public abstract class AbstSearchService {
 	}
 	
 	/**
-	 * This method is used to get the URL full path of the search request, after adding the parameter.
+	 * This method is used to get the full path URL of the search request, after adding the parameter.
 	 * 
 	 * @param para - query parameter.
 	 * @return the full URL path.

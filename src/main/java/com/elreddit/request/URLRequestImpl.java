@@ -33,7 +33,7 @@ public class URLRequestImpl implements URLRequest{
 		BufferedReader buff = null;
 		try {
 			conn = (HttpURLConnection) url.openConnection();
-			// Create a custom User-Agent, to avoid the "Too Many Requests" response.
+			// Create a custom User-Agent, to avoid the "Too Many Requests" response error.
 			conn.setRequestProperty("User-Agent", "linux:com.elreddit.request:v1.0");
 			int statusCode = conn.getResponseCode();
 			// If status of the HTTP response is not a client error or server error then proceed.
