@@ -41,11 +41,8 @@ public class JsonSearchService extends AbstSearchService{
 	}
 	
 	public String getURLPath(String para){
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(RedditConstants.JSONSEARCH_URL);
-		sb.append(RedditConstants.SEARCH_QUERY);
-		sb.append(para);
+		StringBuilder sb = new StringBuilder();		
+		sb.append(RedditConstants.JSONSEARCH_URL).append(RedditConstants.SEARCH_QUERY).append(para);
 		return sb.toString();
 	}
 	
