@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.elreddit.constants.RedditConstants;
 import com.elreddit.util.ParametersUtil;
 
 public class URLRequestImpl implements URLRequest{
@@ -34,7 +35,7 @@ public class URLRequestImpl implements URLRequest{
 		try {
 			conn = (HttpURLConnection) url.openConnection();
 			// Create a custom User-Agent, to avoid the "Too Many Requests" response error.
-			conn.setRequestProperty("User-Agent", "linux:com.elreddit.request:v1.0");
+			conn.setRequestProperty(RedditConstants.USER_AGENT_PROP_NAME, RedditConstants.USER_AGENT_PROP_VALUE);
 			int statusCode = conn.getResponseCode();
 			// If status of the HTTP response is not a client error or server error then proceed.
 			if(statusCode < CLIENT_ERROR_CODE){
