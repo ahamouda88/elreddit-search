@@ -11,7 +11,7 @@ import com.elreddit.constants.RedditConstants;
 import com.elreddit.util.ServiceFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-@Path("/search")
+@Path(RedditConstants.URL_MAIN_PATH)
 public class SearchController {
 	
 	@GET

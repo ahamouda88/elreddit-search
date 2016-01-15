@@ -18,4 +18,9 @@ public interface RedditConstants{
 	 */
 	String USER_AGENT_PROP_VALUE = "linux:com.elreddit.request:v1.0";
 	String USER_AGENT_PROP_NAME = "User-Agent";
+	
+	/*
+	 * URL Controller Path.
+	 */
+	String URL_MAIN_PATH = "/search";
 }
