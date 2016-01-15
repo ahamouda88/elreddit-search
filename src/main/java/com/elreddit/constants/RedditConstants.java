@@ -13,6 +13,9 @@ public interface RedditConstants{
 	String SEARCH_QUERY = "?q=";
 	String AUTHOR_ATTRIBUTE = "author";
 	
+	/*
+	 * Properties.
+	 */
 	String USER_AGENT_PROP_VALUE = "linux:com.elreddit.request:v1.0";
 	String USER_AGENT_PROP_NAME = "User-Agent";
 }
